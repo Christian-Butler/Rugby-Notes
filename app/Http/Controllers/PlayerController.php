@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePlayerRequest;
 use App\Http\Requests\UpdatePlayerRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class PlayerController extends Controller
 {
@@ -25,11 +26,11 @@ class PlayerController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        return view('rugby.create');
+        return view('players.create');
     }
 
     /**
@@ -40,7 +41,24 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+            'description' => 'required|max:500',
+            'author' =>'required'
+        ]);
+
+   //     dd($request);
+        Player::create([
+            // Ensure you have the use statement for
+            // Illuminate\Support\Str at the top of this file.
+           'user_id' => Auth::id(),
+            'title' => $request->title,
+            'category' => $request->category,
+            'description' => $request->description,
+            'book_image' => "public\image\Tess_the_TickTock_Dog.jpg",
+            'author' => $request->author
+        ]);
     }
 
     /**
@@ -51,7 +69,7 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
