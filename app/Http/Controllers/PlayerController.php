@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Player;
-use App\Http\Requests\StorePlayerRequest;
-use App\Http\Requests\UpdatePlayerRequest;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StorePlayerRequest;
+use App\Http\Requests\UpdatePlayerRequest;
 
 class PlayerController extends Controller
 {
@@ -17,6 +18,9 @@ class PlayerController extends Controller
      */
     public function index()
     {
+        // $players = Player::where('user_id', Auth::id())->latest('updated_at')->paginate(10);
+
+
         $players = Player::paginate(10);
         // dd($players);
         return view('players.index')->with('players', $players);
@@ -29,7 +33,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return view('rugby.create');
+        return view('players.create');
     }
 
     /**
@@ -40,7 +44,36 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    //    dd($request);
+
+        // $request->validate([
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'dob' => 'required|max:100',
+        //     'player_number' =>'required'
+        // ]);
+
+        // $img = $request->file('img');
+        // $extension = $img->getClientOriginalExtension();
+        // $filename = date('Y-m-d-His') . '_' . $request->input('title'). '.'. $extension;
+
+        // $path = $img->storeAs('public/images', $filename)
+
+        Player::create([
+            // Ensure you have the use statement for
+            
+           'user_id' => Auth::id(),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'dob' => $request->dob,
+            'player_number' => $request->player_number,
+            // 'img' => $filename
+            
+        ]);
+
+        
+
+        return to_route('players.index');
     }
 
     /**
@@ -51,7 +84,8 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        //
+        $player = Player::where('id', $id)->firstOrFail();
+        return view('players.show')->with('player', $player);
     }
 
     /**
@@ -62,7 +96,8 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::where('id', $id)->firstOrFail();
+        return view('players.edit')->with('player', $player);
     }
 
     /**
@@ -72,9 +107,25 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Player $player)
     {
-        //
+        //dd($request);
+        // $request->validate([
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'dob' => 'required|max:100',
+        //     'player_number' =>'required'
+        // ]);
+
+        $player->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'dob' => $request->dob,
+            'player_number' => $request->player_number
+            // 'img'=> $request->img
+        ]);
+
+        return to_route('players.show', $player);
     }
 
     /**
@@ -83,8 +134,12 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Player $player)
     {
-        //
+        // $player = Player::where('id',$id)->firstOrFail();
+        $player->delete();
+    
+
+        return to_route('players.index');
     }
 }

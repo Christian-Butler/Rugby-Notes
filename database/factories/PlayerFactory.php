@@ -17,7 +17,12 @@ class PlayerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'first_name' =>$this->faker->name,
+            'last_name' =>$this->faker->name,
+            'dob' =>$this->faker->date,
+            'player_number' =>$this->faker->randomDigit
+            
+            
         ];
     }
 }
