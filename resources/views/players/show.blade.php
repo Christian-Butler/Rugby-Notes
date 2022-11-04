@@ -48,6 +48,8 @@
                         {{$player->dob}}
                     </p>
 
+                    <img src="{{asset('storage/images/' . $player->img) }}" alt="player image">
+
                     <p></p>
                 </div>
         </div>

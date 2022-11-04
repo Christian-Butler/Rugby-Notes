@@ -53,11 +53,11 @@ class PlayerController extends Controller
         //     'player_number' =>'required'
         // ]);
 
-        // $img = $request->file('img');
-        // $extension = $img->getClientOriginalExtension();
-        // $filename = date('Y-m-d-His') . '_' . $request->input('title'). '.'. $extension;
+        $img = $request->file('img');
+        $extension = $img->getClientOriginalExtension();
+        $filename = date('Y-m-d-His') . '_' . $request->input('title'). '.'. $extension;
 
-        // $path = $img->storeAs('public/images', $filename)
+        $path = $img->storeAs('public/images', $filename);
 
         Player::create([
             // Ensure you have the use statement for
@@ -67,7 +67,7 @@ class PlayerController extends Controller
             'last_name' => $request->last_name,
             'dob' => $request->dob,
             'player_number' => $request->player_number,
-            // 'img' => $filename
+            'img' => $filename
             
         ]);
 
@@ -121,8 +121,8 @@ class PlayerController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'dob' => $request->dob,
-            'player_number' => $request->player_number
-            // 'img'=> $request->img
+            'player_number' => $request->player_number,
+            'img'=> $request->img
         ]);
 
         return to_route('players.show', $player);

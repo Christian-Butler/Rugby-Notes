@@ -20,7 +20,8 @@ class PlayerFactory extends Factory
             'first_name' =>$this->faker->name,
             'last_name' =>$this->faker->name,
             'dob' =>$this->faker->date,
-            'player_number' =>$this->faker->randomDigit
+            'player_number' =>$this->faker->randomDigit,
+            'img'=>$this->faker->name
             
             
         ];
