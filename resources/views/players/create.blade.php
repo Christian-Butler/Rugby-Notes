@@ -9,11 +9,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           
+            {{-- displays an error when the input fields are missing data when creating a player --}}
             @foreach ($errors->all() as $error)
                 <p>{{$error}}</p>
             @endforeach
 
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
+                    {{-- Inputs and the stores the data in the database that was submitted in the from fields --}}
                     <form action=" {{ route('players.store') }}" method="POST" enctype="multipart/form-data">
                          @csrf 
                          <x-text-input type="text" 
