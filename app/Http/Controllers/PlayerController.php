@@ -46,12 +46,12 @@ class PlayerController extends Controller
     {
     //    dd($request);
 
-        // $request->validate([
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'dob' => 'required|max:100',
-        //     'player_number' =>'required'
-        // ]);
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'dob' => 'required|max:100',
+            'player_number' =>'required'
+        ]);
 
         $img = $request->file('img');
         $extension = $img->getClientOriginalExtension();
@@ -110,12 +110,12 @@ class PlayerController extends Controller
     public function update(Request $request, Player $player)
     {
         //dd($request);
-        // $request->validate([
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'dob' => 'required|max:100',
-        //     'player_number' =>'required'
-        // ]);
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'dob' => 'required|max:100',
+            'player_number' =>'required'
+        ]);
 
         $player->update([
             'first_name' => $request->first_name,
