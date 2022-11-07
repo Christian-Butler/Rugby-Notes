@@ -14,10 +14,12 @@
                 <p>{{$error}}</p>
             @endforeach
 
-                <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
+                <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg" {{-- authenicates post requests made by the user --}}>
                     {{-- Inputs and the stores the data in the database that was submitted in the from fields --}}
                     <form action=" {{ route('players.store') }}" method="POST" enctype="multipart/form-data">
+                        {{-- authenicates post requests made by the user --}}
                          @csrf 
+                        {{-- Displays the input field for creating the first name of the player --}}
                          <x-text-input type="text" 
                          name="first_name" 
                          field="First Name" 
@@ -29,7 +31,7 @@
                          @error('First Name')
                             <div class="text-red-600 text-sm">{{$message}}</div>
                          @enderror
-
+                         {{-- Displays the input field for creating the last name of the player --}}
                          <x-text-input type="text" 
                          name="last_name" 
                          field="Last Name" 
@@ -41,7 +43,7 @@
                          @error('Last Name')
                             <div class="text-red-600 text-sm">{{$message}}</div>
                          @enderror
-
+                         {{-- Displays the input field for creating the date of birth of the player --}}
                          <x-text-input type="date" 
                          name="dob" 
                          field="Date of Birth" 
@@ -53,7 +55,7 @@
                          @error('Date of Birth')
                             <div class="text-red-600 text-sm">{{$message}}</div>
                          @enderror
-
+                         {{-- Displays the input field for creating the player number of the player --}}
                          <x-text-input type="number" 
                          name="player_number" 
                          field="Player Number" 
@@ -65,7 +67,7 @@
                          @error('Player Number')
                             <div class="text-red-600 text-sm">{{$message}}</div>
                          @enderror
-
+                         {{-- Displays the input field for uploading the image of the player --}}
                          <x-file-input
                         type="file"
                         name="img"
