@@ -10,11 +10,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           
             {{-- displays an error when the input fields are missing data when creating a player --}}
-            @foreach ($errors->all() as $error)
-                <p>{{$error}}</p>
-            @endforeach
+            
 
                 <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg" {{-- authenicates post requests made by the user --}}>
+                    @foreach ($errors->all() as $error)
+                <p>{{$error}}</p>
+                    @endforeach
                     {{-- Inputs and the stores the data in the database that was submitted in the from fields --}}
                     <form action=" {{ route('players.store') }}" method="POST" enctype="multipart/form-data">
                         {{-- authenicates post requests made by the user --}}
@@ -41,7 +42,7 @@
                          :value="@old('Last Name')"></x-text-input>
 
                          @error('Last Name')
-                            <div class="text-red-600 text-sm">{{$message}}</div>
+                            <div class="text-red-600 text-sm">{{$mesage}}</div>
                          @enderror
                          {{-- Displays the input field for creating the date of birth of the player --}}
                          <x-text-input type="date" 

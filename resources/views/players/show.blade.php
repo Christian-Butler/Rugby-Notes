@@ -20,7 +20,7 @@
                     <strong>Updated at: </strong> {{ $player->updated_at->diffForHumans()}}
                 </p>
 
-                <a href="{{ route('players.edit', $player->id)}}" class="ml-auto">Edit Note</a>
+                <a href="{{ route('players.edit', $player->id)}}" class="btn-link ml-auto">Edit Note</a>
 
                 <form action="{{ route('players.destroy', $player) }}" method="post">
                     @method('delete')
