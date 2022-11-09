@@ -18,7 +18,5 @@ class Player extends Model
 
     ];
 
-    protected $dates =[
-        'name_field'
-    ];
+    protected $dates =[]
 }
