@@ -27,3 +27,7 @@ Route::resource('/players',PlayerController::class)->middleware(['auth']);
 Route::resource('/teams', TeamsController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
