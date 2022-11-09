@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Teams;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TeamsSeeder extends Seeder
 {
@@ -14,6 +15,6 @@ class TeamsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Teams::factory()->times(50)->create();
     }
 }

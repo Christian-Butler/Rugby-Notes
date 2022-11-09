@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\PlayerController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\PlayerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +24,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('/players',PlayerController::class)->middleware(['auth']);
+Route::resource('/teams', TeamsController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';

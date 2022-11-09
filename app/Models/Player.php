@@ -17,4 +17,8 @@ class Player extends Model
    'img'
 
     ];
+
+    protected $dates =[
+        'name_field'
+    ];
 }

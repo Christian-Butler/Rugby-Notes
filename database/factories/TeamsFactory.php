@@ -17,9 +17,9 @@ class TeamsFactory extends Factory
     public function definition()
     {
         return [
-            'teams_name' =>$this->faker->namespace,
-            'league' => $this->faker->namespace,
-            'number_of_players'=> $this->faker->integer
+            'teams_name' =>$this->faker->name,
+            'league' => $this->faker->name,
+            'number_of_players'=> $this->faker->randomDigit
         
         ];
     }

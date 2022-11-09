@@ -10,10 +10,21 @@
                     </a>
                 </div>
 
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('teams.index') }}">
+                    </a>
+                </div>
+
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('players.index')" :active="request()->routeIs('players')">
                         {{ __('Players') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('teams.index')" :active="request()->routeIs('teams')">
+                        {{ __('Teams') }}
                     </x-nav-link>
                 </div>
             </div>
