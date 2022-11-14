@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Player;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -21,9 +22,12 @@ class PlayerController extends Controller
         // $players = Player::where('user_id', Auth::id())->latest('updated_at')->paginate(10);
 
 
-        $players = Player::paginate(10);
-        // dd($players);
-        return view('players.index')->with('players', $players);
+       $user = Auth::user();
+       $user->authorizeRoles('admin');
+
+       $players = Player::paginate(10);
+
+       return view('admin.books.index')->width('books', $books);
     }
 
     /**
@@ -33,7 +37,10 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        return view('players.create');
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+
+        return view('admin.books.create');
     }
 
     /**
@@ -85,7 +92,9 @@ class PlayerController extends Controller
     public function show($id)
     {
         $player = Player::where('id', $id)->firstOrFail();
-        return view('players.show')->with('player', $player);
+        $user = Auth::user();
+        $user->authorizeRoles('admin');
+        return view('admin.players.show')->with('player', $player);
     }
 
     /**
@@ -97,7 +106,9 @@ class PlayerController extends Controller
     public function edit($id)
     {
         $player = Player::where('id', $id)->firstOrFail();
-        return view('players.edit')->with('player', $player);
+        $user = Auth::user();
+        $user->authorizeRoles('admin';)
+        return view('admin.players.edit')->with('player', $player);
     }
 
     /**
@@ -137,9 +148,10 @@ class PlayerController extends Controller
     public function destroy(Player $player)
     {
         // $player = Player::where('id',$id)->firstOrFail();
-        $player->delete();
-    
 
-        return to_route('players.index');
+        $player->delete();
+        $user = Auth::user();
+        $user->authorizeRoles('admin';)
+        return to_route('admin.players.index');
     }
 }
