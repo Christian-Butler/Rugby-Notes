@@ -7,7 +7,7 @@
 
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-xl container mx-auto rounded-2 md:pt-6 md:pb-6 md:pl-3 md:pr-3 width: 0.625rem; height: 0.375rem;">
             {{-- <x-alert-success>
                 {{ session('success') }}
             </x-alert-success> --}}
@@ -20,7 +20,7 @@
                     <strong>Updated at: </strong> {{ $player->updated_at->diffForHumans()}}
                 </p>
 
-                <a href="{{ route('players.edit', $player->id)}}" class="btn-link ml-auto">Edit Note</a>
+                <a href="{{ route('players.edit', $player->id)}}" class="btn-link ml-6 pl-6 d-inline-flex vertical-align: middle;">Edit Note</a>
 
                 <form action="{{ route('players.destroy', $player) }}" method="post">
                     @method('delete')
