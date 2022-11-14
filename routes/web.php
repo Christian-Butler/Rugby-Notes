@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\PlayerController as AdminPlayerController;
+use App\Http\Controllers\PlayerController as UserPlayerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,8 @@ Route::get('/dashboard', function () {
 Route::resource('/players',PlayerController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
+
+Route::resource('/admin/players', AdminPlayerController::class)->middleware(['auth'])->names('admin.players');
+
+Route::resource('/user/players', UserBookController::class)->middleware(['auth'])->names('user.players')->only(['index', 'show']);
+
