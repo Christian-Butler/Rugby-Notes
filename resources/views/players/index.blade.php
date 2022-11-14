@@ -15,7 +15,7 @@
 
 
     <div class="py-12">
-        <div class="max-w-xl container mx-auto rounded-2 md:pt-6 md:pb-6 md:ps-3 md:p">
+        <div class="max-w-xl container mx-auto rounded-2 md:pt-6 md:pb-6 md:pl-3 md:pr-3 width: 0.625rem; height: 0.375rem;">
             {{-- <x-alert-success>
                 {{ session('success') }}
             </x-alert-success> --}}
