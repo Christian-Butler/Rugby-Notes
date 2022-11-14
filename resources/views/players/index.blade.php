@@ -15,15 +15,15 @@
 
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto col-sm-6 sm:px-6 lg:px-8">
+        <div class="max-w-xl container mx-auto rounded-2 md:pt-6 md:pb-6 md:ps-3 md:p">
             {{-- <x-alert-success>
                 {{ session('success') }}
             </x-alert-success> --}}
             {{-- Creates the route link to the player create view page --}}
             <a href="{{ route('players.create') }}" class="btn-link btn-lg mb-2">Add a Player</a>
             @forelse ($players as $player)
-                <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
-                    <h2 class="font-bold text-2xl">
+                <div class="my-6 p-6 row bg-white row border-b border-gray-200 shadow-sm sm:rounded-lg justify-content-center">
+                    <h2 class="font-bold text-2xl my-3 py-3 col-sm-6 col-md-6 col-lg-3 col-xl-6">
                         {{-- Creates the route link to the player show view page --}}
                     <a href="{{ route('players.show', $player->id) }}">{{ $player->player_number }}</a>
                     </h2>
